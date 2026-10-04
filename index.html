@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-clima="limpo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tempo · Previsão do tempo</title>
+  <meta name="description" content="Previsão do tempo de qualquer cidade, com dados da API Open-Meteo, feita em HTML, CSS e JavaScript puros.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <h1>Tempo</h1>
+    <form id="form-busca" class="busca" role="search" autocomplete="off">
+      <label for="cidade">Buscar cidade</label>
+      <div class="busca-linha">
+        <input id="cidade" type="search" placeholder="Ex.: Recife" maxlength="60">
+        <button class="btn btn-pri" type="submit">Buscar</button>
+        <button class="btn btn-sec" type="button" id="btn-local">Usar minha localização</button>
+      </div>
+      <ul id="sugestoes" class="sugestoes"></ul>
+    </form>
+  </header>
+
+  <nav id="favoritos" class="favoritos" aria-label="Cidades salvas" hidden></nav>
+  <p id="status" class="status" role="status"></p>
+
+  <main id="painel" class="painel" hidden>
+    <section class="vidro atual" aria-labelledby="local">
+      <div class="atual-topo">
+        <div>
+          <h2 id="local"></h2>
+          <p id="regiao" class="mudo"></p>
+        </div>
+        <div class="atual-acoes">
+          <button class="btn btn-sec" type="button" id="btn-fav">Salvar cidade</button>
+          <button class="btn btn-sec" type="button" id="btn-unidade">Ver em °F</button>
+        </div>
+      </div>
+
+      <div class="agora">
+        <span id="icone" class="icone" aria-hidden="true"></span>
+        <p id="temp" class="temp"></p>
+      </div>
+      <p id="descricao" class="descricao"></p>
+
+      <dl class="detalhes">
+        <div><dt>Sensação</dt><dd id="sensacao"></dd></div>
+        <div><dt>Umidade</dt><dd id="umidade"></dd></div>
+        <div><dt>Vento</dt><dd id="vento"></dd></div>
+        <div><dt>Chuva hoje</dt><dd id="chuva"></dd></div>
+      </dl>
+      <p id="hora" class="mudo"></p>
+    </section>
+
+    <section class="vidro previsao" aria-labelledby="tit-prev">
+      <h2 id="tit-prev">Próximos 7 dias</h2>
+      <ol id="dias" class="dias"></ol>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    Dados de <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>, gratuitos e sem chave de API.
+  </footer>
+</body>
+</html>
